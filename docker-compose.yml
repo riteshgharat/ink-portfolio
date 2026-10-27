@@ -6,8 +6,8 @@ services:
     container_name: ink-portfolio
     restart: unless-stopped
     ports:
-      # Map host port 22 (or 2222) to container port 2222
-      - "2222:2222"
+      # Map host port 22 directly to container port 2222
+      - "22:2222"
     environment:
       - PORT=2222
       - HOST=0.0.0.0

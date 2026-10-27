@@ -1,5 +1,5 @@
 # ─── Production Dockerfile for Ink SSH TUI Portfolio ──────────────
-FROM oven/bun:1.2-alpine AS runner
+FROM docker.io/oven/bun:1.2-alpine AS runner
 
 WORKDIR /app
 
