@@ -1,0 +1,27 @@
+{
+  "name": "ink-portfolio",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "server": "bun run src/server.ts",
+    "dev": "bun run src/dev.tsx",
+    "clean": "bun run scripts/clean.ts"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/figlet": "^1.7.0",
+    "@types/react": "^19.2.14",
+    "@types/ssh2": "^1.15.5",
+    "figlet": "^1.11.0",
+    "ink": "^7.0.1",
+    "node-pty": "^1.1.0",
+    "react": "^19.2.5",
+    "ssh2": "^1.17.0"
+  }
+}

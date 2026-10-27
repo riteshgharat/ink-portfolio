@@ -1,0 +1,23 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ink-portfolio
+    restart: unless-stopped
+    ports:
+      # Map host port 22 (or 2222) to container port 2222
+      - "2222:2222"
+    environment:
+      - PORT=2222
+      - HOST=0.0.0.0
+      - MAX_CONNECTIONS=50
+      - MAX_PER_IP=5
+      - IDLE_TIMEOUT_MS=600000
+      - HOST_KEY_PATH=/app/data/host.key
+    volumes:
+      # Persists host key across container restarts and image updates
+      - portfolio_data:/app/data
+
+volumes:
+  portfolio_data:

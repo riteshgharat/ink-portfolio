@@ -1,0 +1,9 @@
+node_modules
+.git
+.gitignore
+*.key
+host.key*
+data/
+dist/
+.env
+.env.local
