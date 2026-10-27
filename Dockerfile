@@ -13,7 +13,7 @@ ENV NODE_ENV=production \
 
 # Install dependencies with frozen lockfile
 COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile --production
+RUN bun install --production
 
 # Copy source code and assets
 COPY tsconfig.json index.ts ./
