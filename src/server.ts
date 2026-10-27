@@ -4,6 +4,11 @@ import { join, dirname } from "path";
 import { generateKeyPairSync } from "crypto";
 import { startInkPortfolio } from "./index";
 
+// ─── Color & Terminal Environment ────────────────────────────────
+process.env.FORCE_COLOR = "3";
+process.env.COLORTERM = "truecolor";
+process.env.TERM = "xterm-256color";
+
 // ─── Logger Preservation ──────────────────────────────────────────
 const safeLog = console.log.bind(console);
 const safeWarn = console.warn.bind(console);
@@ -137,6 +142,8 @@ const server = new Server({ hostKeys: [hostKey] }, (client, info) => {
         (stream as any).columns = cols;
         (stream as any).rows = rows;
         (stream as any).isTTY = true;
+        (stream as any).getColorDepth = () => 24;
+        (stream as any).hasColors = () => true;
         (stream as any).setRawMode = () => {};
         (stream as any).ref = () => {};
         (stream as any).unref = () => {};

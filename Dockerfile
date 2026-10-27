@@ -5,6 +5,9 @@ WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV=production \
+    FORCE_COLOR=3 \
+    COLORTERM=truecolor \
+    TERM=xterm-256color \
     PORT=2222 \
     HOST=0.0.0.0 \
     MAX_CONNECTIONS=50 \
