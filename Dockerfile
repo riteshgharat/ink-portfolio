@@ -21,9 +21,10 @@ RUN bun install --no-frozen-lockfile --production
 # Copy source code and assets
 COPY tsconfig.json index.ts ./
 COPY src/ ./src/
+COPY public/ ./public/
 
-# Expose SSH Port
-EXPOSE 2222
+# Expose SSH and Web HTTP Ports
+EXPOSE 2222 8080
 
 # Security: Run as non-root user
 USER bun

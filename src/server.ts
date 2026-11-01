@@ -16,6 +16,7 @@ const safeError = console.error.bind(console);
 
 // ─── Environment Configuration ────────────────────────────────────
 const PORT = parseInt(process.env.PORT || "2222", 10);
+const HTTP_PORT = parseInt(process.env.HTTP_PORT || "8080", 10);
 const HOST = process.env.HOST || "0.0.0.0";
 const MAX_CONNECTIONS = parseInt(process.env.MAX_CONNECTIONS || "50", 10);
 const MAX_PER_IP = parseInt(process.env.MAX_PER_IP || "5", 10);
@@ -279,3 +280,32 @@ server.listen(PORT, HOST, () => {
   safeLog(`   Connect command: ssh -p ${PORT} 127.0.0.1`);
   safeLog("───────────────────────────────────────────────────");
 });
+
+// ─── HTTP Landing Page Server (for hi.riteshgharat.me) ───────────
+if (typeof Bun !== "undefined" && Bun.serve) {
+  try {
+    const htmlPath = join(process.cwd(), "public", "index.html");
+    if (existsSync(htmlPath)) {
+      const htmlContent = readFileSync(htmlPath, "utf-8");
+      Bun.serve({
+        port: HTTP_PORT,
+        hostname: HOST,
+        fetch(req: Request) {
+          const url = new URL(req.url);
+          if (url.pathname === "/" || url.pathname === "/index.html") {
+            return new Response(htmlContent, {
+              headers: { "Content-Type": "text/html; charset=utf-8" },
+            });
+          }
+          if (url.pathname === "/health") {
+            return new Response("OK", { status: 200 });
+          }
+          return new Response("Not Found", { status: 404 });
+        },
+      });
+      safeLog(`🌐 Web landing page running on http://${HOST}:${HTTP_PORT}`);
+    }
+  } catch (err: any) {
+    safeWarn(`[!] Could not start HTTP landing server: ${err?.message}`);
+  }
+}

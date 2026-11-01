@@ -156,7 +156,7 @@ export const App: React.FC = () => {
     const lines = currentAscii.split("\n");
     const maxLines = Math.min(lines.length, contentHeight);
     const maxCols = Math.max(halfColumns - 4, 10);
-    return lines.slice(0, maxLines).map((line) => {
+    return lines.slice(0, maxLines).map((line: string) => {
       const clean = line.replace(/\r/g, "");
       return clean.length > maxCols ? clean.slice(0, maxCols) : clean;
     });
@@ -168,7 +168,7 @@ export const App: React.FC = () => {
     // Select key portrait rows
     const lineCount = Math.min(Math.max(contentHeight - 16, 6), 10);
     const targetCols = Math.max(size.columns - 4, 20);
-    return lines.slice(3, 3 + lineCount).map((line) => {
+    return lines.slice(3, 3 + lineCount).map((line: string) => {
       const clean = line.replace(/\r/g, "");
       if (clean.length <= targetCols) return clean;
       const start = Math.max(0, Math.floor((clean.length - targetCols) / 2));
@@ -432,7 +432,7 @@ export const App: React.FC = () => {
             justifyContent="center"
             flexDirection="column"
           >
-            {asciiRenderLines.map((line, i) => (
+            {asciiRenderLines.map((line: string, i: number) => (
               <Text key={`ascii-l-${i}`} wrap="truncate">
                 {line}
               </Text>
@@ -467,7 +467,7 @@ export const App: React.FC = () => {
               alignItems="center"
               justifyContent="center"
             >
-              {mobileAsciiLines.map((line, i) => (
+              {mobileAsciiLines.map((line: string, i: number) => (
                 <Text key={`m-ascii-${i}`} wrap="truncate">
                   {line}
                 </Text>

@@ -6,8 +6,10 @@ services:
     container_name: ink-portfolio
     restart: unless-stopped
     ports:
-      # Map host port 22 directly to container port 2222
+      # Map host port 22 directly to container port 2222 (for ssh.riteshgharat.me & ssh hi.riteshgharat.me)
       - "22:2222"
+      # Map port 8080 for web landing page
+      - "8080:8080"
     environment:
       - PORT=2222
       - HOST=0.0.0.0

@@ -10,7 +10,7 @@ export function terminalLink(text: string, url: string): string {
 
 // ─── Site Metadata ──────────────────────────────────────────────
 export const SITE_META = {
-  domain: "ssh.riteshgharat.in",
+  domain: process.env.DOMAIN || "ssh.riteshgharat.me",
   author: "Ritesh Gharat",
   badge: "[connected]",
 } as const;
@@ -156,8 +156,8 @@ export const CONTACT_ITEMS: ContactItem[] = [
   {
     id: "portfolio",
     label: "PORTFOLIO",
-    value: "riteshgharat.in",
-    url: "https://riteshgharat.in",
+    value: "riteshgharat.me",
+    url: "https://riteshgharat.me",
   },
   {
     id: "github",
