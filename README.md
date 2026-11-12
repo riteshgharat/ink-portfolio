@@ -1,6 +1,8 @@
-# Ink Portfolio 🚀
+# Ink Portfolio
 
-Interactive, responsive retro-modern terminal portfolio powered by [React Ink](https://github.com/vadimdemedes/ink) and [Bun](https://bun.sh). Accessible locally and over SSH (`ssh.riteshgharat.in`).
+Interactive, responsive retro-modern terminal portfolio powered by [React Ink](https://github.com/vadimdemedes/ink) and [Bun](https://bun.sh). Accessible locally and over SSH (`ssh.riteshgharat.me` or `hi.riteshgharat.me`).
+
+![demo gif](demo.gif)
 
 ---
 
@@ -41,7 +43,7 @@ Then connect from another terminal:
 ```bash
 ssh -p 2222 127.0.0.1
 # or in production:
-# ssh ssh.riteshgharat.in
+# ssh ssh.riteshgharat.me
 ```
 
 ---
